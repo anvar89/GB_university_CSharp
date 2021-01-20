@@ -1,9 +1,10 @@
 ﻿using System;
 
-//  Задача 2
-//  Запросить у пользователя порядковый номер текущего месяца и вывести его название.
+//  Задача 2 и 3
+//  2. Запросить у пользователя порядковый номер текущего месяца и вывести его название.
+//  3. Определить, является ли введённое пользователем число чётным.
 
-namespace Task2
+namespace Task2_3
 {
     class Program
     {
@@ -23,7 +24,7 @@ namespace Task2
                 else
                     Console.WriteLine("Вы должны ввести число!");
             }
-
+            Console.Write("Вы выбрали месяц: ");
             switch (monthNumber)
             {
                 case 1: Console.WriteLine("Январь"); break;
@@ -39,6 +40,9 @@ namespace Task2
                 case 11: Console.WriteLine("Ноябрь"); break;
                 case 12: Console.WriteLine("Декабрь"); break;
             }
+
+            if (monthNumber % 2 == 0) Console.WriteLine("Это было чётное число");
+            else Console.WriteLine("Это было нечётное число");
 
             Console.ReadKey();
 
