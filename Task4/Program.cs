@@ -11,28 +11,35 @@ namespace Task4
        
         static void Main(string[] args)
         {
+            // Динамичные данные
             string bankName = "ПАО СБЕРБАНК";
             string shopName = "АВТОЦЕНТР";
             string shopAddress_line1 = "г. Сатка, Саткинский р-н.";
             string shopAddress_line2 = "ул. 50 лет ВЛКСМ, дом 3";
-            long phoneNumber = 9127963061;
-            DateTime paymentDateTime = new DateTime(2021, 1, 15, 16, 28, 0);
             string terminalID = "0086343";
             string merchantID = "860000006429";
             string clientCardType = "MASTERCARD";
             string clientCardTypeID = "A0000000041010";
             string clintCardNumberMasked = "********3897";
-            decimal totalRubl = 370;
-            decimal commision = 0;
-            bool isApproved = true;
-            bool isRequiredClientSign = false;
+            string someCode = "92ABD87FF99900EA92ABD87FF99900EA";
+
+            long phoneNumber = 9127963061;
             long authCode = 150469;
             long linkNumber = 744129195039;
             int salesReceiptNumber = 30;
-            string someCode = "92ABD87FF99900EA92ABD87FF99900EA";
 
+            decimal totalRubl = 370;
+            decimal commision = 0;
+
+            DateTime paymentDateTime = new DateTime(2021, 1, 15, 16, 28, 0);
+
+            bool isApproved = true;
+            bool isRequiredClientSign = false;
+
+            // Задаём ширину чека
             int blankWidth = 32;
 
+            //Генерирование чека
             for (int i = 0; i < blankWidth; i++)
             {
                 Console.Write("=");
@@ -107,6 +114,7 @@ namespace Task4
                 Console.Write("=");
             }
 
+            Console.ReadKey();
 
         }
     }
