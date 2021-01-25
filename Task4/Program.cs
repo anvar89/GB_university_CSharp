@@ -38,6 +38,8 @@ namespace Task4
                 }
                 Console.WriteLine();
             }
+
+            Console.ReadKey();
         }
 
         static void CreateShip(int[,] numField, int dimension)

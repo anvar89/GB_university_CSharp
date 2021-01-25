@@ -35,6 +35,8 @@ namespace Task1
             {
                 Console.Write($"{array[i, dimension - 1 - i]} ");
             }
+
+            Console.ReadKey();
         }
 
         static int AskUserForInt(string info)

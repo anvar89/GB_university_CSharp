@@ -20,6 +20,8 @@ namespace Task3
             }
 
             Console.WriteLine(new String(userInputArray));
+
+            Console.ReadKey();
         }
     }
 }
