@@ -33,10 +33,12 @@ namespace Task2
                     switch (userInputArray[0])
                     {
                         case "-exit":
+                            // выход из программы
                             exit = true;
                             break;
 
                         case "-list":
+                            // вывести список всех контактов
                             for (int i = 0; i < phoneDB.GetLength(0); i++)
                             {
                                 Console.WriteLine($"{i}. {phoneDB[i, 0]} - {phoneDB[i, 1]}");
@@ -45,6 +47,7 @@ namespace Task2
                             break;
 
                         case "-edit":
+                            // изменить контакт
                             if (userInputArray.Length > 1)
                             {
                                 if (int.TryParse(userInputArray[1], out int number))

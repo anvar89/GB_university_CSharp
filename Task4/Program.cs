@@ -13,8 +13,6 @@ namespace Task4
 
             int[,] numField = new int[10, 10];
 
-            string[,] field = new string[10, 10]; //игровое поле
-
             // Расстановка кораблей
             CreateShip(numField, 4);
 

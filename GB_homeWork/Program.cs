@@ -20,9 +20,8 @@ namespace Task1
                     array[i, j] = rnd.Next(0, 100);
 
                     Console.Write($"{array[i, j]}\t");
-
-                    if (j == array.GetLength(1) - 1) Console.WriteLine();
                 }
+                Console.WriteLine();
             }
 
             Console.Write("Главная диагональ: ");
