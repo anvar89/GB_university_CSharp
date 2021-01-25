@@ -15,6 +15,7 @@ namespace Task4
 
             string[,] field = new string[10, 10]; //игровое поле
 
+            // Расстановка кораблей
             CreateShip(numField, 4);
 
             CreateShip(numField, 3);
@@ -29,13 +30,13 @@ namespace Task4
             CreateShip(numField, 1);
             CreateShip(numField, 1);
 
-
+            // Вывод игрового поля в консоль
             for (int i = 0; i < numField.GetLength(0); i++)
             {
                 for (int j = 0; j < numField.GetLength(1); j++)
                 {
                     if (numField[i, j] == 1) Console.Write("[X]");
-                    else Console.Write("[ ]");
+                    else Console.Write(" o ");
                 }
                 Console.WriteLine();
             }
@@ -46,7 +47,8 @@ namespace Task4
            Random rnd = new Random();
            if (dimension == 1)
            {
-               for (int cnt = 0; cnt < 10000; cnt++)
+                // Создание 1-трубного корабля
+               for (int cnt = 0; cnt < 10000; cnt++) // 10к попыток создать корабль, чтобы не ставить бесконечный цикл
                {
                    int vPos = rnd.Next(0, numField.GetLength(0) - 1);
                    int gPos = rnd.Next(0, numField.GetLength(1) - 1);
@@ -69,6 +71,8 @@ namespace Task4
            }
            if (dimension > 1)
            {
+                // Создание 2,3,4-трубных кораблей
+
                 for (int i = 0; i < 10000; i++)
                 {
                     bool vertical = rnd.Next(1, 100) < 50;
