@@ -1,18 +1,24 @@
 ﻿using System;
 
-namespace Task_2
+
+namespace Task2
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Задача 2. Написать программу, принимающую на вход строку — набор чисел, разделенных пробелом, и возвращающую число — сумму всех чисел в строке." +
                 "Ввести данные с клавиатуры и вывести результат на экран.");
 
-            Console.WriteLine("Введите последовательность чисел:");
-            string[] userInput = Console.ReadLine().Split(" ");
+            string info = "Введите последовательность чисел: ";
+            string errorMessage = "Ваша последовательность должна содержать цифры, разделённые пробелами";
+
+            AskUser<int[]>(info, errorMessage, Task2conditions, out int[] userInput);
+
+            Console.WriteLine($"Сумма введёных вами чисел: {GetSum(userInput)}");
 
         }
+
 
         public static int GetSum(params int[] arr)
         {
@@ -24,22 +30,37 @@ namespace Task_2
             return result;
         }
 
-
-
-        public static T AskUser<T>(string info, string errorMessage, Predicate<T> condition)
+        public static bool Task2conditions(string input, out int[] array)
         {
-            if (typeof(T) == typeof(string))
+            string[] number = input.Trim().Split(" "); // Массив с числами-строками
+            int[] result = new int[number.Length]; // Массив с числами
+
+            for (int i = 0; i < number.Length; i++)
             {
-                Console.
-                if (condition(string)) return 
+                if (!int.TryParse(number[i], out result[i]))
+                {
+                    array = result;
+                    return false;
+                }
             }
 
-            if (typeof(T) == typeof(int))
-            {
-
-            }
-
-            throw new Exception($"Запрос у пользователя типа {T.ToString} ещё не реализован");
+            array = result;
+            return true;
         }
+
+        public static void AskUser<T>(string info, string errorMessage, ConvertAndCheck<T> check, out T result)
+        {
+            while (true)
+            {
+                Console.Write(info);
+
+                if (check(Console.ReadLine(), out result)) break;
+                else
+                    Console.WriteLine(errorMessage);
+            }
+
+        }
+
+        public delegate bool ConvertAndCheck<T>(string input, out T result);
     }
 }
