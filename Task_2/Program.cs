@@ -17,6 +17,8 @@ namespace Task2
 
             Console.WriteLine($"Сумма введёных вами чисел: {GetSum(userInput)}");
 
+            Console.ReadKey();
+
         }
 
 

@@ -16,6 +16,7 @@ namespace Task3
 
             Console.WriteLine(TrancelateSeason(DetectSeason(userInput)));
 
+            Console.ReadKey();
         }
         enum Seasons { Winter, Spring, Summer, Autumn }
         
