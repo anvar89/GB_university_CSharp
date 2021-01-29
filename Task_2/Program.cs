@@ -34,7 +34,7 @@ namespace Task2
 
         public static bool Task2conditions(string input, out int[] array)
         {
-            string[] number = input.Trim().Split(" "); // Массив с числами-строками
+            string[] number = input.Split(" ", StringSplitOptions.RemoveEmptyEntries); // Массив с числами-строками
             int[] result = new int[number.Length]; // Массив с числами
 
             for (int i = 0; i < number.Length; i++)
