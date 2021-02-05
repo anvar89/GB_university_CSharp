@@ -39,7 +39,7 @@ namespace Task4
                         directoryStack.Push(item);
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                 }
