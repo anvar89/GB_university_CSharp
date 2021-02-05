@@ -1,21 +1,50 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Task4
 {
     class Program
     {
+        static string identMiddle = "├─";
+        static string identLast = "└─";
+        static string identLine = "│ ";
+        static string identEmpty = "  ";
+
         static void Main(string[] args)
         {
             Console.WriteLine("Задача 4. Сохранить дерево каталогов и файлов по заданному пути в текстовый файл — с рекурсией и без.");
 
-            string path = @"C:\Users\khali\Documents\gitHub\GB_university_CSharp";
+            string path = Directory.GetCurrentDirectory();
 
-            filesTreeRecursive(new DirectoryInfo(path));
+            //filesTreeRecursive(new DirectoryInfo(@"E:\"));
+            filesTreeLoop(@"E:\");
         }
 
-        static void filesTreeLoop(DriveInfo driveInfo)
+        static void filesTreeLoop(string path)
         {
+
+            Stack<string> directoryStack = new Stack<string>();
+            directoryStack.Push(path);
+
+            while (directoryStack.Count > 0)
+            {
+                var dirs = directoryStack.Pop();
+                Console.WriteLine(dirs);
+
+                try
+                {
+                    foreach (var item in Directory.GetDirectories(dirs))
+                    {
+                        directoryStack.Push(item);
+                    }
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
 
         }
 
@@ -24,10 +53,7 @@ namespace Task4
             FileInfo[] files = null;
             DirectoryInfo[] subDirs = null;
 
-            string identMiddle = "├─";
-            string identLast = "└─";
-            string identLine = "│ ";
-            string identEmpty = "  ";
+
 
 
             Console.WriteLine(dirInfo.Name);
@@ -41,32 +67,37 @@ namespace Task4
                 Console.WriteLine(e.Message);
             }
 
-            foreach (DirectoryInfo item in subDirs)
+            if (files != null)
             {
-                Console.Write(ident);
-                if ((item == subDirs[subDirs.Length - 1]) & (files.Length == 0))
+                foreach (DirectoryInfo item in subDirs)
                 {
-                    Console.Write(identLast);
-                    filesTreeRecursive(item, ident + identEmpty);
+                    Console.Write(ident);
+                    if ((item == subDirs[subDirs.Length - 1]) & (files.Length == 0))
+                    {
+                        Console.Write(identLast);
+                        filesTreeRecursive(item, ident + identEmpty);
+                    }
+                    else
+                    {
+                        Console.Write(identMiddle);
+                        filesTreeRecursive(item, ident + identLine);
+                    }
                 }
-                else
-                {
-                    Console.Write(identMiddle);
-                    filesTreeRecursive(item, ident + identLine);
-                }
-
             }
 
-            foreach (FileInfo item in files)
+            if (subDirs != null)
             {
-                Console.Write(ident);
+                foreach (FileInfo item in files)
+                {
+                    Console.Write(ident);
 
-                if (item == files[files.Length - 1])
-                    Console.Write(identLast);
-                else
-                    Console.Write(identMiddle);
+                    if (item == files[files.Length - 1])
+                        Console.Write(identLast);
+                    else
+                        Console.Write(identMiddle);
 
-                Console.WriteLine(item.Name);
+                    Console.WriteLine(item.Name);
+                }
             }
         }
 
