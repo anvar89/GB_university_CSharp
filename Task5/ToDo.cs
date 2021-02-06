@@ -1,17 +1,16 @@
-﻿namespace Task5
-{
-    class ToDo
-    {
-        public string Title { get; private set; }
-        public bool IsDone { get; set; }
+﻿using System;
 
-        public ToDo(string title)
-        {
-            Title = title;
-        }
+namespace Task5
+{
+    [Serializable]
+    public class ToDo
+    {
+        public string Title { get; set; }
+        public bool IsDone { get; set; }
 
         public ToDo()
         {
+
         }
 
         public override string ToString()
